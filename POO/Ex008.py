@@ -3,14 +3,79 @@ Crie um construtor alternativo que receba apenas o nome e defina a idade padrão
 '''
 
 class Pessoa:
-    def __init__(self, nome, idade):
+    def __init__(self, nome="", idade=0, email=""):
         self.nome = nome
-        self.idade = idade
+        self._idade = idade
+        self._email = email
+    
+    def pegar_informacoes(self):
+        self.nome = input("Informe seu nome: ")
+        self.idade = int(input("Informe sua idade: "))
+        self.email = input("Informe seu email: ")
+
+    def mostrar_informacoes(self):
+        print(f"Nome: {self.nome}, Idade: {self.idade} anos, Email: {self.email}")
+    
+    def trocar_email(self):
+        while True:
+            novo_email = input("informe o novo email: ")
+            if novo_email == self.email:
+                print(f"email é o mesmo!")
+            else:
+                self.email = novo_email
+                print(f"O email atualizado com sucesso!\nSeu novo email é {self.email}")
+                break
+    
+    def falar(self):
+        print(f"Olá, meu nome é {self.nome}")
+    
+    def aniversario(self):
+        self.idade+=1
+
+        print(f"Fiz aniversário e agora tenho {self.idade} anos.")
+    
+    @property
+    def idade(self):
+        return self._idade
+    
+    @idade.setter
+    def idade(self, nova_idade):
+        if nova_idade >= 0:
+            self._idade = nova_idade
+        else:
+            print("idade menor que zero?! Acho que não")
+
+    @property
+    def email(self):
+        return self._email
+    
+    @email.setter
+    def email(self, novo_email):
+        self._email = novo_email
     
     @classmethod
-    def pegar_informacao(cls):
-        nome = input("informe seu nome: ")
-        return cls(nome, 18)
+    def nova_pessoa(cls):
+        nome = input("informe nome: ")
+        idade = 34
+        return cls(nome, idade)
+        
 
-p = Pessoa.pegar_informacao()
-print(f"{p.nome} {p.idade}")
+pessoa1 = Pessoa()
+pessoa2 = Pessoa()
+pessoa3 = Pessoa.nova_pessoa()
+
+'''pessoa1.pegar_informacoes()
+pessoa1.mostrar_informacoes()
+pessoa1.trocar_email()
+pessoa1.mostrar_informacoes()
+pessoa1.falar()
+pessoa1.aniversario()
+'''
+
+'''
+pessoa2.idade = 29
+pessoa2.email = "casca@berserk.com"
+print(pessoa2.idade)
+print(pessoa2.email)'''
+
+print(pessoa3.nome, pessoa3.idade)
