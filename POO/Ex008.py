@@ -56,7 +56,7 @@ class Pessoa:
     @classmethod
     def nova_pessoa(cls):
         nome = input("informe nome: ")
-        idade = 34
+        idade = 18
         return cls(nome, idade)
         
 
@@ -79,3 +79,4 @@ print(pessoa2.idade)
 print(pessoa2.email)'''
 
 print(pessoa3.nome, pessoa3.idade)
+
