@@ -2,10 +2,6 @@
 Modifique a classe para que o atributo idade seja privado e acessado via métodos.
 '''
 
-'''
-Crie um método aniversario() que aumenta a idade da pessoa em 1 ano.
-'''
-
 class Pessoa:
     def __init__(self, nome="", idade=0, email=""):
         self.nome = nome
@@ -61,3 +57,4 @@ pessoa1.aniversario()
 
 pessoa2.idade = 29
 print(pessoa2.idade)
+
